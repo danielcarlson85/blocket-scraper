@@ -4,7 +4,7 @@ import re
 
 BaseURL = "https://www.blocket.se/annonser/hela_sverige?q="
 ImageURL="https://www.blocket.se"
-SearchWord="motorcykel"
+SearchWord="bil"
 Prefix = "&page="
 
 Products = []
@@ -60,6 +60,10 @@ f = open(SearchWord + ".txt", "w")
 def main():
 
     webpage = parse_site(BaseURL+SearchWord)
+
+    name = webpage.find("div", class_="icDoQT").text
+
+
 
     total_number_of_pages = int(get_total_pages(webpage))
     print("Number of pages: " + str(total_number_of_pages))
