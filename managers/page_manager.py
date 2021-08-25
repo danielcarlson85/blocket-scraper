@@ -1,12 +1,11 @@
-from bs4 import BeautifulSoup
 import requests
-import stringmanager
-import filemanager
-import product
+from bs4 import BeautifulSoup
+from Models import product
+from managers import file_manager, string_manager
 
 Products = []
 
-def parsesite(url):
+def get_web_page(url):
     page = requests.get(url)
     soup = BeautifulSoup(page.content, "html.parser")
     return soup
@@ -19,13 +18,13 @@ def get_all_products(web_page, search_word, imageURL):
     for x in all_products:
         name = x.find("div", class_="leTJeS").text
         price = x.find("div", class_="jVOeSj").text
-        price = stringmanager.remove_all_charachters(price)
+        price = string_manager.remove_all_charachters(price)
 
         url = x.find("a", class_="evOAPG")["href"]
         url = imageURL + url
 
         Products.append(product.Product(name, price, url))
-        filemanager.save_text_to_file(name,price,url, search_word)
+        file_manager.save_text_to_file(name, price, url, search_word)
 
 
 def get_total_pages(web_page):
@@ -34,5 +33,5 @@ def get_total_pages(web_page):
     for page in pages:
         page_number = (page.getText())
         total_page_numbers.append(page_number)
-    return total_page_numbers[-3]
+    return int(total_page_numbers[-3])
 
