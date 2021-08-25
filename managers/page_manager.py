@@ -10,7 +10,6 @@ def get_web_page(url):
     soup = BeautifulSoup(page.content, "html.parser")
     return soup
 
-
 def get_all_products(web_page, search_word, imageURL):
 
     all_products = web_page.find_all("article", class_="geRkWZ")
@@ -23,8 +22,11 @@ def get_all_products(web_page, search_word, imageURL):
         url = x.find("a", class_="evOAPG")["href"]
         url = imageURL + url
 
-        Products.append(product.Product(name, price, url))
-        file_manager.save_text_to_file(name, price, url, search_word)
+        if price:
+            Products.append(product.Product(name, price, url))
+            file_manager.save_text_to_file(name, price, url, search_word)
+
+    Products.sort(key=lambda x: x.price)
 
 
 def get_total_pages(web_page):
