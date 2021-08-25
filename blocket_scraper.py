@@ -4,7 +4,7 @@ from managers import page_manager
 
 baseURL = "https://www.blocket.se/annonser/hela_sverige?q="
 imageURL= "https://www.blocket.se"
-search_word= "bil"
+search_word= "trumpet"
 prefix = "&page="
 
 

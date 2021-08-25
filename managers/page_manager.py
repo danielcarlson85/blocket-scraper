@@ -29,6 +29,9 @@ def get_all_products(web_page, search_word, imageURL):
 
 def get_total_pages(web_page):
     pages = web_page.find_all("a", class_="dMZGCO")
+    if len(pages) == 1:
+        return 1
+
     total_page_numbers = []
     for page in pages:
         page_number = (page.getText())
