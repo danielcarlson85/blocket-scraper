@@ -37,8 +37,8 @@ def get_all_products(web_page, search_word):
 
 def get_total_pages(web_page):
     pages = web_page.find_all("a", class_="dMZGCO")
-    if not len(pages) or 1:
-        return 1
+#    if not len(pages) or 1:
+#        return 1
 
 
     total_page_numbers = []

@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f0861f8b-b5a9-43ed-8422-401f5cd376b9" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/constants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/product.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/product.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blocket_scraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocket_scraper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/managers/file_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/managers/file_manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/managers/page_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/managers/page_manager.py" afterDir="false" />
@@ -265,18 +262,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/managers/page_manager.py</url>
-          <line>29</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/managers/page_manager.py</url>
-          <line>22</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">

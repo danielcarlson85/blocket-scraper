@@ -3,7 +3,7 @@ from managers import page_manager
 import statistics
 import constants
 
-searchURL = "https://www.blocket.se/annonser/hela_sverige?q=yamaha%204335"
+searchURL = "https://www.blocket.se/annonser/hela_sverige"
 
 def check_if_file_exist_and_delete(search_word):
     if os.path.isfile(search_word + ".txt"):
@@ -17,11 +17,11 @@ def get_full_page_url(page):
 def main():
 
     parsed_web_page = page_manager.get_web_page(searchURL)
-    search_word = page_manager.get_search_word(parsed_web_page)
+    search_word = "all" #page_manager.get_search_word(parsed_web_page)
 
     check_if_file_exist_and_delete(search_word)
 
-    total_number_of_pages = page_manager.get_total_pages(parsed_web_page)
+    total_number_of_pages = 11535 # page_manager.get_total_pages(parsed_web_page)
 
     if not total_number_of_pages:
         print("No products found")
