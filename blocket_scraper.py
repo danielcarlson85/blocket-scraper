@@ -2,9 +2,9 @@ import os.path
 from managers import page_manager
 import statistics
 
-baseURL = "https://www.blocket.se/annonser/hela_sverige/fordon/bilar?cg=1020&ps=2&q=volvo%20v70%20d5&sort=price"
-imageURL= "https://www.blocket.se"
-search_word= ""
+baseURL = "https://www.blocket.se/annonser/hela_sverige"
+imageURL = "https://www.blocket.se"
+search_word = "bil"
 prefix = "&page="
 
 
@@ -20,12 +20,13 @@ def get_full_page_url(page):
 def get_full_web_page_url():
     return baseURL + search_word
 
-def clear_list_from_empty_price(prodList):
+def clear_list_from_empty_price(prod_list):
 
-    for idx, prod in enumerate(prodList):
+    for idx, prod in enumerate(prod_list):
         if not prod.price:
             del prodList[idx]
     return prodList
+
 
 def main():
 
@@ -36,7 +37,7 @@ def main():
 
     print("Number of pages: " + str(total_number_of_pages))
 
-    priceList = []
+    price_list = []
 
     for page in range(total_number_of_pages):
         full_url = get_full_page_url(page)
@@ -53,11 +54,11 @@ def main():
 
     lowest_price = min(priceList)
     middle_price = int(sum/len(page_manager.Products))
-    median_price=statistics.median(priceList)
-    highest_price= max(priceList)
+    median_price = statistics.median(priceList)
+    highest_price = max(priceList)
 
     print("Lowest price: " + str(lowest_price))
-    print("Middle price: "+ str(middle_price))
+    print("Middle price: " + str(middle_price))
     print("Median price: " + str(median_price))
     print("Highest price: " + str(highest_price))
 

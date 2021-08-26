@@ -16,6 +16,7 @@ def get_all_products(web_page, search_word, imageURL):
 
     for x in all_products:
         name = x.find("div", class_="leTJeS").text
+        name = string_manager.remove_last_charachter(name)
         price = x.find("div", class_="jVOeSj").text
         price = string_manager.remove_all_charachters(price)
 
