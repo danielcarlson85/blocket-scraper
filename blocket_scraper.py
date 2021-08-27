@@ -1,27 +1,16 @@
-import os.path
-from managers import page_manager
+from managers import page_manager, file_manager
 import statistics
-import constants
 
-searchURL = "https://www.blocket.se/annonser/hela_sverige"
-
-def check_if_file_exist_and_delete(search_word):
-    if os.path.isfile(search_word + ".txt"):
-        os.remove(search_word + ".txt")
-
-
-def get_full_page_url(page):
-    return searchURL + constants.prefix + str(page + 1)
+searchURL = "https://www.blocket.se/annonser/hela_sverige?q=yamaha"
 
 
 def main():
-
     parsed_web_page = page_manager.get_web_page(searchURL)
-    search_word = "all" #page_manager.get_search_word(parsed_web_page)
+    search_word = page_manager.get_search_word(parsed_web_page)
 
-    check_if_file_exist_and_delete(search_word)
+    file_manager.check_if_file_exist_and_delete(search_word)
 
-    total_number_of_pages = 11535 # page_manager.get_total_pages(parsed_web_page)
+    total_number_of_pages = page_manager.get_total_pages(parsed_web_page)
 
     if not total_number_of_pages:
         print("No products found")
@@ -32,7 +21,7 @@ def main():
     price_list = []
 
     for page in range(total_number_of_pages):
-        full_url = get_full_page_url(page)
+        full_url = file_manager.get_full_page_url(searchURL, page)
         print(full_url)
         webpage = page_manager.get_web_page(full_url)
         page_manager.get_all_products(webpage, search_word)
@@ -45,7 +34,7 @@ def main():
         sum += int(page.price)
 
     lowest_price = min(price_list)
-    middle_price = int(sum/len(page_manager.Products))
+    middle_price = int(sum / len(page_manager.Products))
     median_price = statistics.median(price_list)
     highest_price = max(price_list)
 
