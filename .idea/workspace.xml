@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f0861f8b-b5a9-43ed-8422-401f5cd376b9" name="Default" comment="Refactore to file_manager update .gitignore" />
+    <list default="true" id="f0861f8b-b5a9-43ed-8422-401f5cd376b9" name="Default" comment="remove txt files">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocket_scraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocket_scraper.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -220,7 +223,19 @@
       <option name="presentableId" value="LOCAL−00002" />
       <updated>1630061087572</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL−00003" summary="Refactore to file_manager update .gitignore">
+      <created>1630061208549</created>
+      <option name="number" value="LOCAL−00003" />
+      <option name="presentableId" value="LOCAL−00003" />
+      <updated>1630061208549</updated>
+    </task>
+    <task id="LOCAL−00004" summary="remove txt files">
+      <created>1630061293795</created>
+      <option name="number" value="LOCAL−00004" />
+      <option name="presentableId" value="LOCAL−00004" />
+      <updated>1630061293795</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView">
@@ -273,7 +288,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Refactore to file_manager update .gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactore to file_manager update .gitignore" />
+    <MESSAGE value="remove txt files" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove txt files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

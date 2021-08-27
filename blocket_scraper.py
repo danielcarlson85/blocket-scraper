@@ -5,12 +5,12 @@ searchURL = "https://www.blocket.se/annonser/hela_sverige?q=yamaha"
 
 
 def main():
-    parsed_web_page = page_manager.get_web_page(searchURL)
-    search_word = page_manager.get_search_word(parsed_web_page)
+    full_blocket_base_webpage = page_manager.get_web_page(searchURL)
+    search_word = page_manager.get_search_word(full_blocket_base_webpage)
 
     file_manager.check_if_file_exist_and_delete(search_word)
 
-    total_number_of_pages = page_manager.get_total_pages(parsed_web_page)
+    total_number_of_pages = page_manager.get_total_pages(full_blocket_base_webpage)
 
     if not total_number_of_pages:
         print("No products found")
@@ -29,12 +29,12 @@ def main():
     for price in page_manager.Products:
         price_list.append(int(price.price))
 
-    sum = 0
+    price_sum = 0
     for page in page_manager.Products:
-        sum += int(page.price)
+        price_sum += int(page.price)
 
     lowest_price = min(price_list)
-    middle_price = int(sum / len(page_manager.Products))
+    middle_price = int(price_sum / len(page_manager.Products))
     median_price = statistics.median(price_list)
     highest_price = max(price_list)
 

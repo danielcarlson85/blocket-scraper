@@ -23,9 +23,9 @@ def get_all_products(web_page, search_word):
 
     for x in all_products:
         name = x.find("div", class_="leTJeS").text
-        name = string_manager.remove_last_charachter(name)
+        name = string_manager.remove_last_character(name)
         price = x.find("div", class_="jVOeSj").text
-        price = string_manager.remove_all_charachters(price)
+        price = string_manager.remove_all_characters(price)
         url = x.find("a", class_="evOAPG")["href"]
         url = base_url + url
 
