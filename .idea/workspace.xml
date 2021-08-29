@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f0861f8b-b5a9-43ed-8422-401f5cd376b9" name="Default" comment="remove txt files">
+    <list default="true" id="f0861f8b-b5a9-43ed-8422-401f5cd376b9" name="Default" comment="rename functions">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/dcarlsonhornlund.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GUI/MainWindow.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocket_scraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocket_scraper.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,6 +111,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SearchEverywhereHistoryKey" value="shortc&#9;null&#9;null" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -123,6 +125,27 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.blocket_scraper">
+    <configuration name="MainWindow" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Giraffe" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/GUI" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GUI/MainWindow.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Giraffe" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -190,11 +213,13 @@
       <item itemvalue="Python.app" />
       <item itemvalue="Python.blocket-scraper" />
       <item itemvalue="Python.blocket_scraper" />
+      <item itemvalue="Python.MainWindow" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.blocket_scraper" />
         <item itemvalue="Python.blocket-scraper" />
+        <item itemvalue="Python.MainWindow" />
         <item itemvalue="Python.app" />
       </list>
     </recent_temporary>
@@ -235,7 +260,13 @@
       <option name="presentableId" value="LOCAL−00004" />
       <updated>1630061293795</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL−00005" summary="rename functions">
+      <created>1630061801644</created>
+      <option name="number" value="LOCAL−00005" />
+      <option name="presentableId" value="LOCAL−00005" />
+      <updated>1630061801644</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView">
@@ -289,7 +320,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Refactore to file_manager update .gitignore" />
     <MESSAGE value="remove txt files" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove txt files" />
+    <MESSAGE value="rename functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="rename functions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
