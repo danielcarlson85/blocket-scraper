@@ -1,5 +1,7 @@
+import json
+
 class Product:
-    def __init__(self, name, price, imageURL):
+    def __init__(self, name, price, url):
         self.name = name
         self.price = price
-        self.ImageURL = imageURL
+        self.url = url

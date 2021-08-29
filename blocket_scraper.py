@@ -1,10 +1,14 @@
 from managers import page_manager, file_manager
 import statistics
 
-searchURL = "https://www.blocket.se/annonser/hela_sverige?q=yamaha"
+searchURL = "https://www.blocket.se/annonser/hela_sverige/fordon/motorcyklar?cg=1140&f=c"
+
 
 
 def main():
+
+   # products = file_manager.load_products_from_file()
+
     full_blocket_base_webpage = page_manager.get_web_page(searchURL)
     search_word = page_manager.get_search_word(full_blocket_base_webpage)
 
@@ -45,6 +49,5 @@ def main():
 
     print("Total products found with prices: " + str(len(page_manager.Products)))
     print()
-
 
 main()

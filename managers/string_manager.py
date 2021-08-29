@@ -12,3 +12,11 @@ def remove_last_character(text):
         text = text[:size - 1]
 
     return text
+
+def get_location_from_string(text):
+    text = text.split("\xa0·\xa0")
+    return text[1]
+
+def get_type_from_string(text):
+    text = text.split("\xa0·\xa0")
+    return text[0]
