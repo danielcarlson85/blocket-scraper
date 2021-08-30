@@ -22,15 +22,19 @@ def check_if_file_exist_and_delete(search_word):
 def load_products_from_file(filename):
 
     products = []
-    fh = open('results\\product.txt').readlines()
-    for line in fh:
-        row = line.split(',')
-        name = row[0]
-        price = row[1]
-        url = row[2]
-        location = row[3]
-        date = row[4]
-        store = row[5]
 
-        products.append(product.Product(name, price, url, location, date, store))
+    if os.path.isfile("results\\product.txt"):
+
+        fh = open('results\\product.txt').readlines()
+        for line in fh:
+            row = line.split(',')
+            name = row[0]
+            price = row[1]
+            url = row[2]
+            location = row[3]
+            date = row[4]
+            store = row[5]
+
+            products.append(product.Product(name, price, url, location, date, store))
+
     return products

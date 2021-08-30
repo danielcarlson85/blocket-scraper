@@ -79,7 +79,7 @@ def get_all_products(search_word, saved_products, search_url):
                 saved_produts_url = saved_products[len(saved_products)-1].url.split("\n")[0]
                 if saved_produts_url == url:
                     print("Database updated")
-                    exit()
+                    quit()
                     
             if price:
 
