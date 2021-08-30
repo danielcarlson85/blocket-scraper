@@ -1,0 +1,12 @@
+beautifulsoup4
+keyboard
+mysql-connector-python
+numpy
+requests
+urllib3
+pytest
+PyQt5
+scikit-image
+matplotlib
+scipy
+numpy
