@@ -5,27 +5,26 @@ import json
 
 
 
-def save_text_to_file(product):
+def save_text_to_file(product, filename):
     
     #jsonString = product.toJSON
 
-    f = open("results\\" + "product" + ".txt", "a", encoding="utf-8")
-
+    f = open("results\\" + filename + ".txt", "a", encoding="utf-8")
     f.writelines(product.name + "," + product.price + "," + product.url + "," + product.location + "," + product.date + "," + "\n")
 
 
-def check_if_file_exist_and_delete(search_word):
-    if os.path.isfile(search_word + ".txt"):
-        os.remove(search_word + ".txt")
+def check_if_file_exist_and_delete(filename):
+    if os.path.isfile(filename + ".txt"):
+        os.remove(filename + ".txt")
 
 
 def load_products_from_file(filename):
 
     products = []
 
-    if os.path.isfile("results\\product.txt"):
+    if os.path.isfile("results\\"+ filename + ".txt"):
 
-        fh = open('results\\product.txt').readlines()
+        fh = open("results\\" + filename + ".txt").readlines()
         for line in fh:
             row = line.split(',')
             name = row[0]

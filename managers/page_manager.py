@@ -15,13 +15,16 @@ def get_web_page(url):
 def get_full_page_url(search_url, page):
     return search_url + prefix + str(page + 1)
 
-def get_search_word(web_page):
+def get_search_word(web_page, full_url):
+
     try:
         search_word=web_page.find_all("h1", class_="bnGrQe")[0].text.split("\"")[1]
         return search_word
     except:
-        return "product"
+        urls = full_url.split("?")[0].split("/")
+        search_word = urls[len(urls)-1]
 
+    return search_word
 
     
 def get_total_pages(web_page):
@@ -39,11 +42,9 @@ def get_total_pages(web_page):
 
 
 
-def get_all_products(search_word, saved_products, search_url):
+def get_all_products(saved_products, full_blocket_base_webpage, search_url, filename):
     
-    full_blocket_base_webpage = get_web_page(search_url)
-    search_word = get_search_word(full_blocket_base_webpage)
-
+    
     total_number_of_pages = get_total_pages(full_blocket_base_webpage)
     print("Number of pages: " + str(total_number_of_pages))
 
@@ -67,7 +68,11 @@ def get_all_products(search_word, saved_products, search_url):
             url = base_url + url
 
             date = x.find("p", class_="gEFkeH").text
-            store = x.find("span", class_="hpfPc").text
+
+            try:
+                store = x.find("span", class_="hpfPc").text
+            except:
+                store = ""
 
             typeandlocation = x.find("p", class_="lbavoU").text
             location = string_manager.get_location_from_string(typeandlocation)
@@ -79,12 +84,12 @@ def get_all_products(search_word, saved_products, search_url):
                 saved_produts_url = saved_products[len(saved_products)-1].url.split("\n")[0]
                 if saved_produts_url == url:
                     print("Database updated")
-                    quit()
+                    quit(0)
                     
             if price:
 
                 new_product = product.Product(name, price, url, location, date, store)
                 Products.append(new_product)
-                file_manager.save_text_to_file(new_product)
+                file_manager.save_text_to_file(new_product, filename)
 
     Products.sort(key=lambda x: x.price)

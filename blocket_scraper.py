@@ -1,19 +1,25 @@
 from managers import page_manager, file_manager
 import statistics
 
-search_url = "https://www.blocket.se/annonser/hela_sverige/fordon/motorcyklar?cg=1140&f=c"
+#search_url = "https://www.blocket.se/annonser/hela_sverige/fordon/motorcyklar?cg=1140&f=c"
 
-search_word = "test"
+
+search_url = "https://www.blocket.se/annonser/hela_sverige/fordon/motorcyklar/ovrigt?cg=1148&plo=1&q=motorcykel"
+
+
 
 def main():
 
     price_list = []
 
-    saved_products = file_manager.load_products_from_file(search_word)
+    full_blocket_base_webpage = page_manager.get_web_page(search_url)
+    filename = page_manager.get_search_word(full_blocket_base_webpage, search_url)
 
 
+    saved_products = file_manager.load_products_from_file(filename)
 
-    page_manager.get_all_products(search_word, saved_products,search_url)
+
+    page_manager.get_all_products(saved_products, full_blocket_base_webpage, search_url, filename)
 
     for price in page_manager.Products:
         price_list.append(int(price.price))
