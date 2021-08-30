@@ -1,34 +1,19 @@
 from managers import page_manager, file_manager
 import statistics
 
-searchURL = "https://www.blocket.se/annonser/hela_sverige/fordon/motorcyklar?cg=1140&f=c"
+search_url = "https://www.blocket.se/annonser/hela_sverige/fordon/motorcyklar?cg=1140&f=c"
 
-
+search_word = "test"
 
 def main():
 
-   # products = file_manager.load_products_from_file()
-
-    full_blocket_base_webpage = page_manager.get_web_page(searchURL)
-    search_word = page_manager.get_search_word(full_blocket_base_webpage)
-
-    file_manager.check_if_file_exist_and_delete(search_word)
-
-    total_number_of_pages = page_manager.get_total_pages(full_blocket_base_webpage)
-
-    if not total_number_of_pages:
-        print("No products found")
-        return
-
-    print("Number of pages: " + str(total_number_of_pages))
-
     price_list = []
 
-    for page in range(total_number_of_pages):
-        full_url = file_manager.get_full_page_url(searchURL, page)
-        print(full_url)
-        webpage = page_manager.get_web_page(full_url)
-        page_manager.get_all_products(webpage, search_word)
+    saved_products = file_manager.load_products_from_file(search_word)
+
+
+
+    page_manager.get_all_products(search_word, saved_products,search_url)
 
     for price in page_manager.Products:
         price_list.append(int(price.price))
