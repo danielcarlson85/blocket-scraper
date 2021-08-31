@@ -116,7 +116,9 @@ def get_all_products(saved_products, full_blocket_base_webpage, search_url, file
     for page in range(total_number_of_pages):
         full_url = get_full_page_url(search_url, page)
         web_page = get_web_page(full_url)
-    
+
+        print(full_url)
+
         all_products = web_page.find_all("article", class_="geRkWZ")
 
         for found_product in all_products:
