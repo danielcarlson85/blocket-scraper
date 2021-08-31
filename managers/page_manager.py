@@ -41,6 +41,16 @@ def get_total_pages(web_page):
     return int(total_page_numbers[-3])
 
 
+def get_name(name):
+    name = x.find("div", class_="leTJeS").text
+    name = string_manager.remove_last_character(name)
+    name = string_manager.remove_special_characters(name)
+
+def get_price():
+            price = x.find("div", class_="jVOeSj").text
+            price = string_manager.remove_all_characters(price)
+
+
 
 def get_all_products(saved_products, full_blocket_base_webpage, search_url, filename):
     
@@ -58,13 +68,10 @@ def get_all_products(saved_products, full_blocket_base_webpage, search_url, file
 
 
         # TODO add variables to product object
-        for x in all_products:
-            name = x.find("div", class_="leTJeS").text
-            name = string_manager.remove_last_character(name)
-            name = string_manager.remove_special_characters(name)
+        for product in all_products:
+            name = get_name(product)
 
-            price = x.find("div", class_="jVOeSj").text
-            price = string_manager.remove_all_characters(price)
+
         
             url = x.find("a", class_="evOAPG")["href"]
             url = base_url + url
