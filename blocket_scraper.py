@@ -21,7 +21,9 @@ def main():
 
     page_manager.get_all_products(saved_products, full_blocket_base_webpage, search_url, filename)
 
-    for price in page_manager.Products:
+    saved_products = file_manager.load_products_from_file(filename)
+
+    for price in saved_products:
         price_list.append(int(price.price))
 
     price_sum = 0

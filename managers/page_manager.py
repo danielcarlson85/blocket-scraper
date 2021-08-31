@@ -61,6 +61,8 @@ def get_all_products(saved_products, full_blocket_base_webpage, search_url, file
         for x in all_products:
             name = x.find("div", class_="leTJeS").text
             name = string_manager.remove_last_character(name)
+            name = string_manager.remove_special_characters(name)
+
             price = x.find("div", class_="jVOeSj").text
             price = string_manager.remove_all_characters(price)
         
@@ -80,16 +82,19 @@ def get_all_products(saved_products, full_blocket_base_webpage, search_url, file
         
             year_model =  x.find("li", class_="kAfCZF").text
         
+       
+
             if len(saved_products) != 0:
+
                 saved_produts_url = saved_products[len(saved_products)-1].url.split("\n")[0]
                 if saved_produts_url == url:
-                    print("Database updated")
-                    quit(0)
-                    
-            if price:
+                    print(url + " exist in db")
+            else:
+                if price:
 
-                new_product = product.Product(name, price, url, location, date, store)
-                Products.append(new_product)
-                file_manager.save_text_to_file(new_product, filename)
+                    new_product = product.Product(name, price, url, location, date, store)
+                    Products.append(new_product)
 
-    Products.sort(key=lambda x: x.price)
+                    file_manager.save_text_to_file(new_product, filename)
+
+                    Products.sort(key=lambda x: x.price)

@@ -11,6 +11,11 @@ def remove_last_character(text):
         size = len(text)
         text = text[:size - 1]
 
+    return 
+
+def remove_special_characters(text):
+    return text.replace(",","")
+
     return text
 
 def get_location_from_string(text):
