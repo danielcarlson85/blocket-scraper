@@ -23,8 +23,13 @@ def remove_special_characters(text):
 
 
 def get_location_from_string(text):
-    text = text.split("\xa0·\xa0")
-    return text[1]
+    try:
+        text = text.split("\xa0·\xa0")
+        return text[1]
+    except:
+        return "No location"
+
+    
 
 
 def get_type_from_string(text):

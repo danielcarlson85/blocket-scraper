@@ -83,19 +83,38 @@ def get_product_type(product):
 
 
 def get_product_year_model(product):
-    year_model =  product.find("li", class_="kAfCZF").text
+    try:
+        year_model =  product.find("li", class_="kAfCZF").text
+    except:
+        year_model = ""
+
     return year_model
 
+
+def check_if_product_exist_in_list(saved_products, url):
+    for product in reversed(saved_products):
+        if product.url == url:
+            return True
+
+    return False
+
+
+def save_to_file(date, filename, location, name, price, products, store, url, year):
+    if price:
+        new_product = product.Product(name, price, url, location, date, store, year)
+        products.append(new_product)
+        file_manager.save_text_to_file(new_product, filename)
+        products.sort(key=lambda x: x.price)
 
 def get_all_products(saved_products, full_blocket_base_webpage, search_url, filename):
     total_number_of_pages = get_total_pages(full_blocket_base_webpage)
     print("Number of pages: " + str(total_number_of_pages))
     
     products = []
+    is_product_in_list = False
 
     for page in range(total_number_of_pages):
         full_url = get_full_page_url(search_url, page)
-        print(full_url)
         web_page = get_web_page(full_url)
     
         all_products = web_page.find_all("article", class_="geRkWZ")
@@ -111,17 +130,13 @@ def get_all_products(saved_products, full_blocket_base_webpage, search_url, file
             year = get_product_year_model(found_product)
 
             if len(saved_products) != 0:
-                saved_produts_url = saved_products[len(saved_products)-1].url.split("\n")[0]
-                if saved_produts_url == url:
+                is_product_in_list = check_if_product_exist_in_list(saved_products, url)
+                if not is_product_in_list:
+                       save_to_file(date, filename, location, name, price, products, store, url, year)
+                else:
                     print("Database is up to date")
                     return saved_products
             else:
-                if price:
-                    new_product = product.Product(name, price, url, location, date, store, year)
-                    products.append(new_product)
+                save_to_file(date, filename, location, name, price, products, store, url, year)
 
-                    file_manager.save_text_to_file(new_product, filename)
-
-                    products.sort(key=lambda x: x.price)
-        
     return products
