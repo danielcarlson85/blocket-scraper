@@ -4,13 +4,12 @@ from models import product
 import json
 
 
-
 def save_text_to_file(product, filename):
     
     #jsonString = product.toJSON
 
     f = open("results\\" + filename + ".txt", "a", encoding="utf-8")
-    f.writelines(product.name + "," + product.price + "," + product.url + "," + product.location + "," + product.date + "," + "\n")
+    f.writelines(product.name + "," + product.price + "," + product.url + "," + product.location + "," + product.date + "," + product.store + "," + product.year + "\n")
 
 
 def check_if_file_exist_and_delete(filename):
@@ -33,7 +32,8 @@ def load_products_from_file(filename):
             location = row[3]
             date = row[4]
             store = row[5]
+            year = row[6]
 
-            products.append(product.Product(name, price, url, location, date, store))
+            products.append(product.Product(name, price, url, location, date, store, year))
 
     return products

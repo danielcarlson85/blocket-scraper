@@ -4,9 +4,6 @@ from constants.constants import base_url, prefix
 from models import product
 from managers import file_manager, string_manager
 
-Products = []
-
-
 def get_web_page(url):
     page = requests.get(url)
     soup = BeautifulSoup(page.content, "html.parser")
@@ -41,23 +38,60 @@ def get_total_pages(web_page):
     return int(total_page_numbers[-3])
 
 
-def get_name(name):
-    name = x.find("div", class_="leTJeS").text
+def get_product_name(product):
+    name = product.find("div", class_="leTJeS").text
     name = string_manager.remove_last_character(name)
     name = string_manager.remove_special_characters(name)
+    return name
 
-def get_price():
-            price = x.find("div", class_="jVOeSj").text
+
+def get_product_price(product):
+            price = product.find("div", class_="jVOeSj").text
             price = string_manager.remove_all_characters(price)
+            return price
 
+
+def get_product_url(product):
+    url = product.find("a", class_="evOAPG")["href"]
+    url = base_url + url
+    return url
+
+
+def get_product_date(product):
+    date = product.find("p", class_="gEFkeH").text
+    return date
+
+
+def get_product_store_type(product):
+    try:
+        store = product.find("span", class_="hpfPc").text
+    except:
+        store = "Private"
+    return store
+
+
+def get_product_location(product):
+    typeandlocation = product.find("p", class_="lbavoU").text
+    location = string_manager.get_location_from_string(typeandlocation)
+    return location
+
+
+def get_product_type(product):
+    typeandlocation = product.find("p", class_="lbavoU").text
+    type = string_manager.get_type_from_string(typeandlocation)
+    return type
+
+
+def get_product_year_model(product):
+    year_model =  product.find("li", class_="kAfCZF").text
+    return year_model
 
 
 def get_all_products(saved_products, full_blocket_base_webpage, search_url, filename):
-    
-    
     total_number_of_pages = get_total_pages(full_blocket_base_webpage)
     print("Number of pages: " + str(total_number_of_pages))
-
+    
+    products = []
 
     for page in range(total_number_of_pages):
         full_url = get_full_page_url(search_url, page)
@@ -66,42 +100,28 @@ def get_all_products(saved_products, full_blocket_base_webpage, search_url, file
     
         all_products = web_page.find_all("article", class_="geRkWZ")
 
-
-        # TODO add variables to product object
-        for product in all_products:
-            name = get_name(product)
-
-
-        
-            url = x.find("a", class_="evOAPG")["href"]
-            url = base_url + url
-
-            date = x.find("p", class_="gEFkeH").text
-
-            try:
-                store = x.find("span", class_="hpfPc").text
-            except:
-                store = ""
-
-            typeandlocation = x.find("p", class_="lbavoU").text
-            location = string_manager.get_location_from_string(typeandlocation)
-            type = string_manager.get_type_from_string(typeandlocation)
-        
-            year_model =  x.find("li", class_="kAfCZF").text
-        
-       
+        for found_product in all_products:
+            name = get_product_name(found_product)
+            price = get_product_price(found_product)
+            url = get_product_url(found_product)
+            date = get_product_date(found_product)
+            store = get_product_store_type(found_product)
+            location = get_product_location(found_product)
+            type = get_product_type(found_product)
+            year = get_product_year_model(found_product)
 
             if len(saved_products) != 0:
-
                 saved_produts_url = saved_products[len(saved_products)-1].url.split("\n")[0]
                 if saved_produts_url == url:
-                    print(url + " exist in db")
+                    print("Database is up to date")
+                    return saved_products
             else:
                 if price:
-
-                    new_product = product.Product(name, price, url, location, date, store)
-                    Products.append(new_product)
+                    new_product = product.Product(name, price, url, location, date, store, year)
+                    products.append(new_product)
 
                     file_manager.save_text_to_file(new_product, filename)
 
-                    Products.sort(key=lambda x: x.price)
+                    products.sort(key=lambda x: x.price)
+        
+    return products
