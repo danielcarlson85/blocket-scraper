@@ -7,6 +7,7 @@ import json
 def save_text_to_file(product, filename):
     
     #jsonString = product.toJSON
+    check_if_folder_exist_or_create("results")
 
     f = open("results\\" + filename + ".txt", "a", encoding="utf-8")
     f.writelines(product.name + "," + product.price + "," + product.url + "," + product.location + "," + product.date + "," + product.store + "," + product.year + "\n")
@@ -16,6 +17,10 @@ def check_if_file_exist_and_delete(filename):
     if os.path.isfile(filename + ".txt"):
         os.remove(filename + ".txt")
 
+
+def check_if_folder_exist_or_create(foldername):
+    if not os.path.isdir(foldername):
+        os.mkdir(foldername)
 
 def load_products_from_file(filename):
 
