@@ -11,16 +11,21 @@ def remove_last_character(text):
         size = len(text)
         text = text[:size - 1]
 
-    return 
+    return text
+
 
 def remove_special_characters(text):
-    return text.replace(",","")
+    
+    try:
+        return text.replace(",","")
+    except:
+        print("No special character found")
 
-    return text
 
 def get_location_from_string(text):
     text = text.split("\xa0·\xa0")
     return text[1]
+
 
 def get_type_from_string(text):
     text = text.split("\xa0·\xa0")
