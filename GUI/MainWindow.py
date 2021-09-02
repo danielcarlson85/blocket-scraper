@@ -1,32 +1,37 @@
+from PyQt6.QtWidgets import QApplication,QWidget,QTextEdit,QVBoxLayout,QPushButton,QMessageBox
+from components import center_window
+from components import TextBox_Url as textbox_url
+
+from blocket_scraper import start
 import sys
-from PyQt5.QtWidgets import (QApplication, QWidget, QPushButton,
-                             QLineEdit, QInputDialog)
 
+class Window(QWidget):
+        def __init__(self,parent=None):
+                super().__init__(parent)
 
-class Example(QWidget):
-    def __init__(self):
-        super().__init__()
-        self.initUI()
+                self.setWindowTitle("QTextEdit")
+                self.resize(300,270)
 
-    def initUI(self):
-        self.btn = QPushButton('Show Dialog', self)
-        self.btn.move(20, 20)
-        self.btn.clicked.connect(self.showDialog)
+                self.btnPress1 = QPushButton("Button 1")
+                self.textbox = textbox_url.create()
 
-        self.le = QLineEdit(self)
-        self.le.move(130, 22)
+                layout = QVBoxLayout()
+                layout.addWidget(self.textbox)
 
-        self.setGeometry(300, 300, 300, 150)
-        self.setWindowTitle('Input Dialog')
-        self.show()
+                layout.addWidget(self.btnPress1)
+                self.setLayout(layout)
+                center_window.center(self)
 
-    def showDialog(self):
-        text, ok = QInputDialog.getText(self, 'input dialog', 'Is this ok?')
-        if ok:
-            self.le.setText(str(text))
+                self.btnPress1.clicked.connect(self.btnPress1_Clicked)
+
+        def btnPress1_Clicked(self):
+                found_products = start(self.textbox.toPlainText())
+                print(found_products[0].name)
+                QMessageBox.about(self, "Title", found_products[0].name)
 
 
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    ex = Example()
-    sys.exit(app.exec_())
+        app = QApplication(sys.argv)
+        win = Window()
+        win.show()
+        sys.exit(app.exec())

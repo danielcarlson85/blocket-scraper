@@ -6,7 +6,7 @@ numpy
 requests
 urllib3
 pytest
-PyQt5
+PyQt6
 scikit-image
 matplotlib
 scipy
