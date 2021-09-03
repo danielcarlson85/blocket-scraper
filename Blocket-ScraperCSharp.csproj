@@ -1,0 +1,55 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>Blocket_ScraperCSharp</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="azureFunction\**" />
+    <Compile Remove="constants\**" />
+    <Compile Remove="env\**" />
+    <Compile Remove="GUI\**" />
+    <Compile Remove="managers\**" />
+    <Compile Remove="models\**" />
+    <Compile Remove="results\**" />
+    <Compile Remove="venv\**" />
+    <Compile Remove="__pycache__\**" />
+    <EmbeddedResource Remove="azureFunction\**" />
+    <EmbeddedResource Remove="constants\**" />
+    <EmbeddedResource Remove="env\**" />
+    <EmbeddedResource Remove="GUI\**" />
+    <EmbeddedResource Remove="managers\**" />
+    <EmbeddedResource Remove="models\**" />
+    <EmbeddedResource Remove="results\**" />
+    <EmbeddedResource Remove="venv\**" />
+    <EmbeddedResource Remove="__pycache__\**" />
+    <None Remove="azureFunction\**" />
+    <None Remove="constants\**" />
+    <None Remove="env\**" />
+    <None Remove="GUI\**" />
+    <None Remove="managers\**" />
+    <None Remove="models\**" />
+    <None Remove="results\**" />
+    <None Remove="venv\**" />
+    <None Remove="__pycache__\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="test.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="blocket_scraper.py" />
+    <None Remove="Compile to .exe.txt" />
+    <None Remove="requirements.txt" />
+    <None Remove="test.py" />
+    <None Remove="update requirements.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+</Project>

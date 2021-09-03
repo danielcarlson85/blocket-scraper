@@ -139,3 +139,5 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+/obj
+/bin/Debug/net5.0

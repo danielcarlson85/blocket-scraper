@@ -108,7 +108,6 @@ def save_to_file(date, filename, location, name, price, products, store, url, ye
 
 def get_all_products(saved_products, full_blocket_base_webpage, search_url, filename):
     total_number_of_pages = get_total_pages(full_blocket_base_webpage)
-    print("Number of pages: " + str(total_number_of_pages))
     
     products = []
     is_product_in_list = False
@@ -116,8 +115,6 @@ def get_all_products(saved_products, full_blocket_base_webpage, search_url, file
     for page in range(total_number_of_pages):
         full_url = get_full_page_url(search_url, page)
         web_page = get_web_page(full_url)
-
-        print(full_url)
 
         all_products = web_page.find_all("article", class_="geRkWZ")
 
@@ -136,7 +133,7 @@ def get_all_products(saved_products, full_blocket_base_webpage, search_url, file
                 if not is_product_in_list:
                        save_to_file(date, filename, location, name, price, products, store, url, year)
                 else:
-                    print("Database is up to date")
+                    #print("Database is up to date")
                     return saved_products
             else:
                 save_to_file(date, filename, location, name, price, products, store, url, year)
