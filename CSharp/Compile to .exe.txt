@@ -1,0 +1,12 @@
+pip install pyinstaller
+
+
+To windows GUI:
+pyinstaller --onefile -w blocket_scraper.py
+
+to console
+pyinstaller --onefile blocket_scraper.py
+
+
+
+Program can be found under /dist folder

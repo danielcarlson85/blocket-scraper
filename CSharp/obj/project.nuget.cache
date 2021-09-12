@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "hKaVXix4lwzLf24f2Hf4FyF6bd31ghYuhJ2EXy0BHJYG/gk/K76XXFUkqsYnZdX2oKAY6iU4WHrYTWOiqUfqpw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\info\\Desktop\\blocket-scraper\\Blocket-ScraperCSharp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\info\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

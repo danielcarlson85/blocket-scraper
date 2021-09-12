@@ -12,7 +12,7 @@ import os
 search_url = "https://www.blocket.se/annonser/hela_sverige/fordon/motorcyklar/custom?cg=1142&q=yamaha%20virago%201100"
 #search_url =
 #"https://www.blocket.se/annonser/hela_sverige/fordon/motorcyklar/scooter?cg=1144&q=yamaha"
-def start_blocket_scraper(url):
+def start(url):
 
     price_list = []
     full_blocket_base_webpage = page_manager.get_web_page(url)
@@ -51,7 +51,5 @@ def start_blocket_scraper(url):
         print(x.toJSON()+",")
     print("]")
 
-    return found_products
-
 if __name__ == '__main__':
-        start_blocket_scraper(search_url)
+        start(search_url)

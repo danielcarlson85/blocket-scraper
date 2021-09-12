@@ -9,8 +9,12 @@ namespace Blocket_ScraperCSharp
 {
     class Program
     {
+        private static List<Product> _products = new();
+
         static void Main(string[] args)
         {
+            InstallAllReq();
+
 
             Console.WriteLine("Downloading all data...");
 
@@ -26,10 +30,26 @@ namespace Blocket_ScraperCSharp
                 using (StreamReader reader = process.StandardOutput)
                 {
                     string result = reader.ReadToEnd();
-                    Console.WriteLine(result);
-                    List<Product> products = JsonConvert.DeserializeObject<List<Product>>(result);
+                    _products = JsonConvert.DeserializeObject<List<Product>>(result);
                 }
             }
+
+            foreach (var product in _products)
+            {
+                Console.WriteLine(product.Name);
+            }
+        }
+
+        private static void InstallAllReq()
+        {
+            string req = Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.FullName, "requirements.txt");
+
+            ProcessStartInfo start = new ProcessStartInfo();
+            start.FileName = @"pip";
+            start.Arguments = $"install -r {req}";
+            start.UseShellExecute = false;
+            start.RedirectStandardOutput = true;
+            Process.Start(start);
         }
     }
 }

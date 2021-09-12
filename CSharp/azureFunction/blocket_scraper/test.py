@@ -1,0 +1,2 @@
+def printnu():
+    print("test")
